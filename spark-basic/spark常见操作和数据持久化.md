@@ -88,3 +88,27 @@ sum = rdd.reduce(lambda x, y: x + y)
 >> 使用 aggregate() 时，需要提供我们期待返回的类型的初始值。然后通过一个函数把 RDD 中的元素合并起来放入累加器。考虑到每个节点是在本地进行累加的，最终，还需要提供第二个函数来将累加器两两合并
 
 ## 数据持久化
+org.apache.spark.storage.StorageLevel和pyspark.StorageLevel中的持久化级别
+
+|级别|使用的空间|CPU时间|是否在内存中|是否在磁盘上|备注|
+|-----|-----|-----|-----|-----|-----|
+|MEMORY_ONLY|高|低|是|否|
+|MEMORY_ONLY_SER|低|高|是|否|
+|MEMORY_AND_DISK|高|中等|部分|部分|如果数据在内存中放不下，则溢写到磁盘上|
+|MEMORY_AND_DISK_SER|低|高|部分|部分|如果数据在内存中放不下，则溢写到磁盘上。在内存中存放序列化后的数据|
+|DISK_ONLY|低|高|否|是||
+
+-   scala相关代码
+~~~scala
+val result = input.map(x => x * x)
+result.persist(StorageLevel.DISK_ONLY)
+println(result.count())
+println(result.collect().mkString(","))
+~~~
+
+-   python相关代码
+~~~python
+result = inputRdd.map(lambad x :x*x )
+result.persist(StorageLevel.DISK_ONLY)
+print result.count()
+~~~
