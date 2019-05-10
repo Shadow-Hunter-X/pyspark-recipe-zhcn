@@ -28,7 +28,7 @@ class pyspark.SparkContext(master=None, appName=None, sparkHome=None, pyFiles=No
 -   JSC - JavaSparkContext实例。
 -   profiler_cls - 用于进行性能分析的一类自定义Profiler（默认为pyspark.profiler.BasicProfiler）
 
-### SparkContext类函数
+### SparkContext类函数和属性
 
 -   **accumulator**    
 accumulator(value, accum_param=None)

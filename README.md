@@ -1,5 +1,6 @@
 # pyspark-recipe-zhcn
-pyspark-recipes 中文翻译学习
+
+Pyspark Basic Useage 
 
 [spark-基础构架](spark-basic/spark-基础构架.md)     
 [spark-Rdd编程模型](spark-basic/spark-rdd.md)    
@@ -8,4 +9,11 @@ pyspark-recipes 中文翻译学习
 [spark数据读取和保存](spark-basic/spark数据读取与保存.md)      
 [spark-支持的文件系统和sparkSql](spark-basic/spark-支持的文件系统和sparkSql.md) 
 
-[pyspark.SparkContext](core-class-pysaprk/pyspark.SparkContext.md) 
+PySpark Core Class
+
+[pyspark.SparkContext](core-class-pysaprk/pyspark.SparkContext.md)     
+[pyspark.RDD](core-class-pysaprk/pyspark.RDD.md)      
+[pyspark.streaming.StreamingContext](core-class-pysaprk/pyspark.streaming.StreamingContext.md)     
+[pyspark.streaming.DStream](core-class-pysaprk/pyspark.streaming.DStream.md)      
+[pyspark.sql.SparkSession](core-class-pysaprk/pyspark.sql.SparkSession.md)     
+[pyspark.sql.DataFrame](core-class-pysaprk/pyspark.sql.DataFrame.md)      
