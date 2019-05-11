@@ -1,0 +1,4 @@
+---
+title: pyspark.sql.HiveContext
+---
+
