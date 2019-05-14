@@ -2,7 +2,6 @@
 title ： Spark中常见的一些RDD操作
 ---
 
-
 ## 总的来说，每个 Spark 程序或shell会话都按如下方式工作。
 
 -   从外部数据创建出输入 RDD。
@@ -13,8 +12,8 @@ title ： Spark中常见的一些RDD操作
 ## 创建RDD
 Spark 提供了两种创建 RDD 的方式：读取外部数据集，以及在驱动器程序中对一个集合进行并行化
 
-创建RDD最简单的方式就是把程序中一个已有的集合传给SparkContext的parallelize()方法,除了开发原
-型和测试时， 这种方式用得并不多，毕竟这种方式需要把你的整个数据集先放在一台机器的内存中
+>>创建RDD最简单的方式就是把程序中一个已有的集合传给SparkContext的parallelize()方法,
+**除了开发原型和测试时， 这种方式用得并不多，毕竟这种方式需要把你的整个数据集先放在一台机器的内存中**
 
 -    Python 中的 parallelize() 方法
 ~~~python
@@ -26,7 +25,7 @@ lines=sc.parallelize(["pandas","i like pandas"])
 val lines = sc.parallelize(List("pandas", "i like pandas"))
 ~~~
 
--   java 中的 parallelize() 方法
+-   java 中的parallelize() 方法
 ~~~java
 JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 ~~~
@@ -77,7 +76,6 @@ RDD 的转化操作都是惰性求值的。这意味着在被调用行动操作�
 
 ## 向Spark传递函数
 Spark的大部分转化操作和一部分行动操作，都需要依赖用户传递的函数来计算。
-
 
 ### Python 
 在Python中，我们有三种方式来把函数传递给 Spark。传递比较短的函数时，可以使用lambda 表达式来传递。除了lambda表达式，可以外部函数或是定义的局部函数
