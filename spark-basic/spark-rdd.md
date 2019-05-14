@@ -9,7 +9,7 @@ Spark 中的 RDD 就是一个不可变的分布式对象集合。每个 RDD 都�
 用户可以使用两种方法创建 RDD： 读取一个外部数据集，或在驱动器程序里分发驱动器程序中的对象集合（比如 list 和 set）
 以下使用pyspark进行说明：
 
--   开启pyspark shel
+-   开启pyspark shell
 -   l
 ![](spark-rdd/start-pyspark.png)
 
@@ -58,5 +58,5 @@ u'From spark just run ./bin/pyspark ./src/python/[example]'
 -   从外部数据创建出输入 RDD。
 -   使用诸如 filter() 这样的转化操作对 RDD 进行转化，以定义新的 RDD。
 -   告诉 Spark 对需要被重用的中间结果 RDD 执行 persist() 操作。
--   使用行动操作（例如 count() 和 first() 等）来触发一次并行计算， Spark 会对计算进行优化后再执行
+-   使用行动操作（例如 count()和first()等）来触发一次并行计算，Spark 会对计算进行优化后再执行。
 

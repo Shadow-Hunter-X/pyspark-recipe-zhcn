@@ -10,7 +10,7 @@ Spakcontext 表示与Spark群集的连接,可用于在该群集上创建 RDD 和
 
 SparkContext instance is not supported to share across multiple processes out of the box, and PySpark does not guarantee multi-processing execution. Use threads instead for concurrent processing purpose.
 
-SparkContext实例在开箱即用的情况不支持下共享多个进程, PySpark不保证多进程执行,使用线程来来应对并发处理。
+SparkContext实例在开箱即用的情况不支持下共享多个进程, PySpark不保证多进程执行,使用线程来应对并发处理。
 
 ### SparkContext 类实例参数
 
