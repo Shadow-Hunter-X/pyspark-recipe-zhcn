@@ -42,7 +42,7 @@ broadcast(value)
 
     将只读变量广播到群集,返回一个L{broadcast<pyspark.broadcast.Broadcast>}对象, 以便在分布式函数中读取该对象。该变量将只发送到每个群集一次。
 
--   addFile   
+-   **addFile**   
     Add a file to be downloaded with this Spark job on every node. The path passed can be either a local file, a file in HDFS (or other Hadoop-supported filesystems), or an HTTP, HTTPS or FTP URI。
 
     在每个节点上添加要使用此Spark作业下载的文件。传递的路径可以是本地文件、HDFS 中的文件 (或其他 hadoop 支持的文件系统), 也可以是 HTTP、HTTPS 或 FTP URI。
@@ -121,6 +121,7 @@ broadcast(value)
     控制日志级别。这将覆盖任何用户定义的日志设置。有效的日志级别包括: ALL, DEBUG, ERROR, FATAL, INFO, OFF, TRACE, WARN
 
 -   **show_profiles** 
+
 -   **sparkUser()**
     执行SparkContext的用户
 

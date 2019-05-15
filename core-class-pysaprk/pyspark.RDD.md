@@ -4,7 +4,8 @@ title: pyspark.RDD
 
 ## 类 pyspark.RDD
 
-A Resilient Distributed Dataset (RDD), the basic abstraction in Spark. Represents an immutable, partitioned collection of elements that can be operated on in parallel
+A Resilient Distributed Dataset (RDD), the basic abstraction in Spark. Represents an immutable, partitioned collection of elements that can be operated on in parallel.
+
 弹性分布式数据集 (RDD),是Spark中的基本抽象。表示可并行操作的不可变的分区集合
 
 ### pyspark.RDD类参数实例
@@ -223,7 +224,7 @@ True
 ~~~
 
 -   **unpersist()**
-    Mark the RDD as non-persistent, and remove all blocks for it from memory and disk.将RDD标记为非持久性,并从内存和磁盘中删除它的所有块
+    Mark the RDD as non-persistent, and remove all blocks for it from memory and disk.将RDD标记为非持久性,并从内存和磁盘中删除它的所有块.
 
 -   **reduce(f)**
     Reduces the elements of this RDD using the specified commutative and associative binary operator. Currently reduces partitions locally     
@@ -241,12 +242,11 @@ ValueError: Can not reduce() empty RDD
 ~~~
 
 -   **saveAsHadoopDataset(conf, keyConverter=None, valueConverter=None)**
--   **saveAsHadoopFile(path, outputFormatClass, keyClass=None, valueClass=None, keyConverter=None, valueConverter=None, conf=None, compressionCodecClass=None)**
+-   **saveAsHadoopFile(path,outputFormatClass,keyClass=None,valueClass=None,keyConverter=None,valueConverter=None,conf=None, compressionCodecClass=None)**
 -   **saveAsNewAPIHadoopFile(path, outputFormatClass, keyClass=None, valueClass=None, keyConverter=None, valueConverter=None, conf=None)**
 -   **saveAsPickleFile(path, batchSize=10)**
 -   **saveAsSequenceFile(path, compressionCodecClass=None)**
 -   **saveAsTextFile(path, compressionCodecClass=None)**
-
 -   **max(key=None)**
 -   **mean()**
 -   **min(key=None)**
