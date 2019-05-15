@@ -6,7 +6,7 @@ title ： Spark中常见的一些RDD操作
 
 -   从外部数据创建出输入 RDD。
 -   使用诸如 filter() 这样的转化操作对 RDD 进行转化，以定义新的 RDD。
--   告诉 Spark 对需要被重用的中间结果 RDD 执行 persist() 操作。
+-   告诉Spark对需要被重用的中间结果RDD执行persist()操作。
 -   使用行动操作（例如 count() 和 first() 等）来触发一次并行计算， Spark 会对计算进行优化后再执行
 
 ## 创建RDD
@@ -15,17 +15,17 @@ Spark 提供了两种创建 RDD 的方式：读取外部数据集，以及在驱
 >>创建RDD最简单的方式就是把程序中一个已有的集合传给SparkContext的parallelize()方法,
 **除了开发原型和测试时， 这种方式用得并不多，毕竟这种方式需要把你的整个数据集先放在一台机器的内存中**
 
--    Python 中的 parallelize() 方法
+-    Python中的parallelize()方法
 ~~~python
 lines=sc.parallelize(["pandas","i like pandas"])
 ~~~
 
--   Scala 中的 parallelize() 方法
+-   Scala 中的 parallelize()方法
 ~~~scala
 val lines = sc.parallelize(List("pandas", "i like pandas"))
 ~~~
 
--   java 中的parallelize() 方法
+-   java 中的parallelize()方法
 ~~~java
 JavaRDD<String> lines = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 ~~~
@@ -55,7 +55,7 @@ allRdd = scalaRdd.union(javaRdd)
 ![](spark中的RDD操作/lineage_graph.png)
 
 ### Actions操作
-我们已经看到了如何通过转化操作从已有的 RDD 创建出新的 RDD，不过有时，我们希望对数据集进行实际的计算。 行动操作是第二种类型的 RDD 操作，它们会把最终求得的结果返回到驱动器程序， 或者写入外部存储系统中。
+我们已经看到了如何通过转化操作从已有的 RDD 创建出新的 RDD，不过有时，希望对数据集进行实际的计算。Action操作是第二种类型的RDD操作，它们会把最终求得的结果返回到驱动器程序， 或者写入外部存储系统中。
 
 -   用count()来返回计数结果，用take()来收集RDD中的一些元素
 

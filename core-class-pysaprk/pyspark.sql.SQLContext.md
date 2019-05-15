@@ -9,10 +9,10 @@ SQLContext可用于创建DataFrame，注册DataFrame为表，在表上执行SQL�
 
 ### SQLContext(sparkContext, sparkSession=None, jsqlContext=None) 是实例参数
 
-    参数
-    sparkContext - SparkContext支持这个SQLContext。
-    sparkSession - SparkSession这个SQLContext包含的内容。
-    jsqlContext  - 可选的JVM Scala SQLContext。如果设置，不会在JVM中实例化新的SQLContext，而是对这个对象进行所有调用
+    参数 : 
+    sparkContext - SparkContext兼容SQLContext。
+    sparkSession - SparkSession是对SQLContext的封装。
+    jsqlContext  - 可选的JVM Scala SQLContext。如果设置，不会在JVM中实例化新的SQLContext，而是对这个对象进行所有调用。
 
 ### SQLContext类函数和属性
 
@@ -76,5 +76,3 @@ SQLContext可用于创建DataFrame，注册DataFrame为表，在表上执行SQL�
 
 -   **tables(dbName=None)**
     返回DataFrame包含给定数据库中表的名称,如果dbName未指定，则将使用当前数据库
-
-    

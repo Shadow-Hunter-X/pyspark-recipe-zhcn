@@ -11,7 +11,6 @@ Spark Streaming的主要入口点。StreamingContext表示与Spark群集的连�
 
 pyspark.streaming.StreamingContext(sparkContext, batchDuration=None, jssc=None)
 
-
 ### StreamingContext类函数和属性
 
 -   **addStreamingListener(streamingListener)**
