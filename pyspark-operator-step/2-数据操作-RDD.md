@@ -4,8 +4,6 @@ title : 2-数据操作-RDD
 
 ## RDD 编程基础 
 
-
-
 ### 相关概念
 
 **pair RDD**       

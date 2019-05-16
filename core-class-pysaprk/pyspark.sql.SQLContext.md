@@ -25,7 +25,7 @@ SQLContext可用于创建DataFrame，注册DataFrame为表，在表上执行SQL�
     从内存缓存中删除所有缓存的表。
 
 -   **createDataFrame(data, schema=None, samplingRatio=None, verifySchema=True)**   
-    DataFrame从a RDD，列表或a 创建pandas.DataFrame。
+    DataFrame从RDD，列表或创建pandas.DataFrame。
     当schema是列名列表，将从中推断每列的类型data。
     如果schema是None，它会尝试推断模式（列名和类型）data，这应该是一个RDD Row，或namedtuple，或dict。
     当schema是pyspark.sql.types.DataType或数据类型字符串时，它必须与实际数据匹配，否则将在运行时抛出异常。如果给定的模式不是 pyspark.sql.types.StructType，它将被包装成一个 pyspark.sql.types.StructType唯一的字段，字段名称将是“value”，每个记录也将被包装到一个元组中，以后可以将其转换为行。
