@@ -33,7 +33,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql import Row
 from pyspark.sql import Column
 
-# 连接到Spark 集群
+# 创建SparkSession连接到Spark集群-SparkSession.builder.appName('name').getOrCreate()
 spark=SparkSession \
 .builder \
 .appName('my_app_name') \
