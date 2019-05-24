@@ -33,16 +33,12 @@ def create_df_from_rdd():
                         StructField("eyeColor", StringType(), True)])
     # 创建DataFrame
     swimmers = spark.createDataFrame(stringCSVRDD,schema)
-
     # 注册为临时表
     swimmers.registerTempTable("swimmers")
-
     # 使用Sql语句
     data=spark.sql("select * from swimmers")
-    
     # 将数据转换List，这样就可以查看dataframe的数据元素的样式
     print(data.collect())
-
     # 以表格形式展示数据
     data.show()
     
@@ -82,6 +78,7 @@ def create_df_from_mysql():
         user='root',
         password='iamneo'
         ).load()
+
     df.show()
 
 def create_df_from_pandas():
@@ -106,5 +103,5 @@ if __name__=='__main__':
     #create_df_from_csv()
     #create_df_from_json()
     #create_df_from_db()
-    create_df_from_mysql()
-    #create_df_from_pandas()
+    #create_df_from_mysql()
+    create_df_from_pandas()
