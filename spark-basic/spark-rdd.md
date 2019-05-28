@@ -53,9 +53,9 @@ u'From spark just run ./bin/pyspark ./src/python/[example]'
 >>> pythonlines.persist                                                                                                                         <bound method PipelinedRDD.persist of PythonRDD[4] at RDD at PythonRDD.scala:48>
 ~~~
 
-## 总的来说，每个 Spark 程序或shell会话都按如下方式工作。
+## 总的来说，每个Spark程序或shell会话都按如下方式工作。
 
 -   从外部数据创建出输入 RDD。
--   使用诸如 filter() 这样的转化操作对 RDD 进行转化，以定义新的 RDD。
--   告诉 Spark 对需要被重用的中间结果 RDD 执行 persist() 操作。
+-   使用诸如 filter() 这样的转化操作对RDD进行转化，以定义新的 RDD。
+-   告诉 Spark 对需要被重用的中间结果RDD执行persist() 操作。
 -   使用行动操作（例如 count()和first()等）来触发一次并行计算，Spark 会对计算进行优化后再执行。
