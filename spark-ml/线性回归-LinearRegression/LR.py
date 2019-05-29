@@ -34,7 +34,7 @@ print((test_df.count(), len(test_df.columns)))
 
 from pyspark.ml.regression import LinearRegression   # 导入线性回顾库
 
-lin_Reg=LinearRegression(labelCol='output')   # labelCol
+lin_Reg=LinearRegression(labelCol='output')   # labelCol,相对于featrues列，表示要进行预测的列
 
 lr_model=lin_Reg.fit(train_df)   # 训练数据 ，fit返回一个 fitted model，即LineRegressionModel对象
 
