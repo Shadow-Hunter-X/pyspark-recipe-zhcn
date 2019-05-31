@@ -39,6 +39,10 @@ spark=SparkSession \
 .appName('my_app_name') \
 .getOrCreate()
 
+# 另外一种创建方式,向SparkSession传递一个SparkContext
+# sc = SparkContext.getOrCreate()
+# spark = SparkSession(sc)
+
 # 创建DataFrame,可以从不同的数据创建，以下进行对个数据源读取创建说明
 
 def create_df_from_rdd():

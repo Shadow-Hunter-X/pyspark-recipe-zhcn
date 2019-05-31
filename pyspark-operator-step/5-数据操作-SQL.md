@@ -57,6 +57,10 @@ from pyspark.sql.types import StructType, StructField, LongType, StringType
 # 创建SparkSession 对象
 spark=SparkSession.builder.appName('my_app_name').getOrCreate()
 
+# 另外一种创建方式,向SparkSession传递一个SparkContext
+# sc = SparkContext.getOrCreate()
+# spark = SparkSession(sc)
+
 # json - sql 
 def read_json_sql():
     # 构造用于测试的Json数据

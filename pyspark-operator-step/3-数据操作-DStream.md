@@ -33,5 +33,38 @@ Spark Streaming为DStream 提供了与RDD相同的容错属性。只要输入数
 ### 代码举例
 
 ~~~python
+# 每隔一段时间生成一个文件,用于Streaming使用
+import time
+import datetime
+
+def generate_file():
+    t = time.strftime('%Y-%m-%d',time.localtime())
+    newfile = t + '.txt' 
+    f = open(newfile,'w')
+    f.write(newfile) 
+    f.close()
+
+if __name__ == '__main__':
+    generate_file()
 
 ~~~
+
+~~~python
+from pyspark import SparkContext
+from pyspark.streaming import StreamingContext
+
+def read_file_stream():
+    sc = SparkContext.getOrCreate()
+    ssc = StreamingContext(sc, 2)
+
+    stream_data = ssc.textFileStream("D:\Developing\pyspark-sql-test").map(lambda x: len(x))
+    stream_data.pprint()
+    ssc.start()
+    ssc.awaitTermination()
+
+if __name__ == '__main__':
+    read_file_stream()
+
+~~~
+
+
