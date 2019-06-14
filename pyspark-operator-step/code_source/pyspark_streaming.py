@@ -6,7 +6,7 @@ def read_file_stream():
     sc = SparkContext.getOrCreate()
     ssc = StreamingContext(sc, 1)
 
-    stream_data = ssc.textFileStream("D:\Developing\data").map(lambda x: x.split(","))
+    stream_data = ssc.textFileStream("D:\Developing\data")
     #stream_data = ssc.textFileStream("D:\Developing\data").map(lambda x: len(x))
     stream_data.pprint()
     ssc.start()
@@ -14,8 +14,14 @@ def read_file_stream():
 
 def save_rdd(rdd):
     if not rdd.isEmpty():
-        rdd.toDF( [ "name", "score" ] ) \
-        .write.save("points_json", format="json", mode="append") 
+        rdd.toDF( [ "name", "score" ] ).write.save("points_json", format="json", mode="append") 
+
+def save_rdd(rdd):
+
+    resoult={}
+    for i in str:
+                resoult[i]=str.count(i)
+                print(resoult)
 
 def save_stream_rdd():
     sc = SparkContext.getOrCreate()
