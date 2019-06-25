@@ -12,27 +12,16 @@ def read_file_stream():
     ssc.start()
     ssc.awaitTermination()
 
-def save_rdd(rdd):
-    if not rdd.isEmpty():
-        rdd.toDF( [ "name", "score" ] ).write.save("points_json", format="json", mode="append") 
-
-def save_rdd(rdd):
-
-    resoult={}
-    for i in str:
-                resoult[i]=str.count(i)
-                print(resoult)
-
 def save_stream_rdd():
     sc = SparkContext.getOrCreate()
     spark = SparkSession(sc)
     ssc = StreamingContext(sc, 1)
-    stream_data = ssc.textFileStream("D:\Developing\data").map( lambda x: x.split(","))
-    stream_data.foreachRDD(save_rdd)
-
+    stream_data = ssc.textFileStream("D:\Developing\data")   
+    value = stream_data.countByValue()
+    #print(value)
     ssc.start()
     ssc.awaitTermination()
 
 if __name__=="__main__":
-    #read_file_stream()
-    save_stream_rdd()
+    read_file_stream()
+    #save_stream_rdd()
