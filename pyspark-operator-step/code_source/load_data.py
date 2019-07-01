@@ -11,9 +11,8 @@ def test_textFile(sc):
 	对textFile使用
 	"""
 	lines=sc.textFile('2019-06-11-15-23-10.txt')
-	#print('{}{}'.format('textFile -> num of doc lines:',lines.count()))
-	print('{}{}'.format('textFile -> collect:',lines.collect()))
-	#print('{}{}'.format('textFile -> doc first line:',lines.first()))
+	print('{}{}'.format('textFile -> num of doc lines:',lines.count()))
+	print('{}{}'.format('textFile -> doc first line:',lines.first()))
 	resoult={}
 	str = ''.join(lines.collect())
 	for i in str:
@@ -30,6 +29,6 @@ def test_wholeTextFiles(sc):
 	
 if __name__=='__main__': 
 	sc = SparkContext()
-	#test_parallelize(sc)
+	test_parallelize(sc)
 	test_textFile(sc)
-	#test_wholeTextFiles(sc)
+	test_wholeTextFiles(sc)

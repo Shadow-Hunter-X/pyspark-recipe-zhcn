@@ -89,19 +89,31 @@ def create_df_from_pandas():
     spark_df = spark.createDataFrame (df,schema=['a','b','c','d'])
     spark_df.show()
 
-def create_df_from_parquet(parquet):
-    pass
-
 def create_df_from_hive(hive):
-    pass
+    # 创建支持Hive的Spark Session
+    appName = "PySpark Hive Example"
+    master = "local"
 
-# 数据缓存，存放到内存，存放到外部介质    
+    spark = SparkSession.builder \
+    .appName(appName) \
+    .master(master) \
+    .enableHiveSupport() \
+    .getOrCreate()
+
+    df = spark.sql("select * from test_db.test_table")
+    df.show()
+
+    # 将数据保存到Hive新表
+    df.write.mode("overwrite").saveAsTable("test_db.test_table2")
+    # 查看数据
+    spark.sql("select * from test_db.test_table2").show()
+
 
 if __name__=='__main__':
-    #create_json_file()
-    #create_df_from_rdd() 
-    #create_df_from_csv()
-    #create_df_from_json()
-    #create_df_from_db()
-    #create_df_from_mysql()
+    create_json_file()
+    create_df_from_rdd() 
+    create_df_from_csv()
+    create_df_from_json()
+    create_df_from_db()
+    create_df_from_mysql()
     create_df_from_pandas()

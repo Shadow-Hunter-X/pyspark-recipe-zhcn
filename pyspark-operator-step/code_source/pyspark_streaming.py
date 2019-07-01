@@ -8,7 +8,11 @@ def read_file_stream():
 
     stream_data = ssc.textFileStream("D:\Developing\data")
     #stream_data = ssc.textFileStream("D:\Developing\data").map(lambda x: len(x))
-    stream_data.pprint()
+    #stream_data.pprint()
+
+    data = stream_data.countByValue()
+    data.pprint()
+
     ssc.start()
     ssc.awaitTermination()
 
