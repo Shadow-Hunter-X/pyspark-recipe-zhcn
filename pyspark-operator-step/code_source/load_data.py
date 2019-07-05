@@ -10,15 +10,20 @@ def test_textFile(sc):
 	"""
 	对textFile使用
 	"""
-	lines=sc.textFile('D:\PySpark-Env\README.md')
+	lines=sc.textFile('2019-06-11-15-23-10.txt')
 	print('{}{}'.format('textFile -> num of doc lines:',lines.count()))
 	print('{}{}'.format('textFile -> doc first line:',lines.first()))
+	resoult={}
+	str = ''.join(lines.collect())
+	for i in str:
+		resoult[i]=str.count(i)
+	print(resoult)
 
 def test_wholeTextFiles(sc):
 	"""
 	对wholeTextFiles使用
 	"""
-	lines=sc.wholeTextFiles('D:\PySpark-Env\README.md')
+	lines=sc.wholeTextFiles('2019-06-11-15-23-10.txt')
 	print('{}{}'.format('wholeTextFiles -> num of doc lines:',lines.count()) )
 	print('{}{}'.format('wholeTextFiles -> doc first line:',lines.first()) )
 	

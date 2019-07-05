@@ -10,8 +10,8 @@ from pyspark.sql import Column
 import pandas as pd
 import numpy as np
 
-sc = SparkContext(appName="test")
 ## 在 Spark 1 中使用SQLContext来创建 DataFrame
+sc = SparkContext(appName="test")
 spark_sc = SQLContext(sc)
 
 def load_data():
@@ -63,12 +63,29 @@ def read_from_mysql():
     df.show()
 
 def read_from_hive():
-	
-    pass
+    #from pyspark import SparkContext
+    #from pyspark.sql import HiveContext
+
+    sc = SparkContext("local", "pySpark Hive JDBC Demo App")
+    # Create a Hive Context
+    hive_context = HiveContext(sc)
+    crime = hive_context.table("default.crime")
+    crime.registerTempTable("crime_temp")
+    pettythefts = hive_context.sql('SELECT * FROM crime_temp WHERE Primary_Type = "THEFT" AND Description = "$500 AND UNDER"')
+
+    pettythefts_table_df = pettythefts.select("id", "case_number", "primary_type", "description", "location_description", "beat", "district", "ward", "community_area")
+
+    mode = 'overwrite'
+    url = 'jdbc:postgresql://<database server IP address>:5432/postgres?searchpath=public'
+    properties = {"user": "<username>", "password": "<password>", "driver": "org.postgresql.Driver"}
+    table = 'public.pettytheft'
+
+    pettythefts_table_df.write.jdbc(url=url, table=table, mode=mode, properties=properties)
+
 
 if __name__ == '__main__':
-    #load_data()
-    #read_from_json()
-    #read_from_csv()
-    #read_from_postgresql()
+    load_data()
+    read_from_json()
+    read_from_csv()
+    read_from_postgresql()
     read_from_mysql()
