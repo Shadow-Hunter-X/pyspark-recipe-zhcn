@@ -21,6 +21,7 @@ def create_json_file():
 
 def create_df_from_rdd():
     # 从集合中创建新的RDD
+    print("##------------------ create_df_from_rdd -----------------------")
     stringCSVRDD = spark.sparkContext.parallelize([
                     (123, "Katie", 19, "brown"),
                     (456, "Michael", 22, "green"),
@@ -48,6 +49,7 @@ def create_df_from_json():
     '''
     read的类型是DataFrameReader
     '''
+    print("##------------------ create_df_from_json -----------------------")
     df = spark.read.json('pandainfo.json')
     df.show()
 
@@ -60,6 +62,7 @@ def create_df_from_postgres():
     format : 指定数据源格式 - 如 jdbc ， json ， csv等
     options: 为数据源添加相关特性选项
     """
+    print("##------------------ create_df_from_postgres -----------------------")
     df=spark.read.format('jdbc').options(
         url='jdbc:postgresql://localhost:5432/northwind',
         dbtable='public.orders',
@@ -72,6 +75,7 @@ def create_df_from_postgres():
 def create_df_from_mysql():
     """
     """
+    print("##------------------ create_df_from_mysql -----------------------")
     df=spark.read.format('jdbc').options(
         url='jdbc:mysql://localhost:3306',
         dbtable='mysql.db',
@@ -85,11 +89,13 @@ def create_df_from_pandas():
     """
     从Python pandas获取数据
     """
+    print("##------------------ create_df_from_pandas -----------------------")
     df = pd.DataFrame(np.random.random((4,4)))
     spark_df = spark.createDataFrame (df,schema=['a','b','c','d'])
     spark_df.show()
 
 def create_df_from_hive(hive):
+    print("##------------------ create_df_from_hive -----------------------")
     # 创建支持Hive的Spark Session
     appName = "PySpark Hive Example"
     master = "local"
@@ -114,6 +120,6 @@ if __name__=='__main__':
     create_df_from_rdd() 
     create_df_from_csv()
     create_df_from_json()
-    create_df_from_db()
-    create_df_from_mysql()
+    create_df_from_postgres()
+    #create_df_from_mysql()
     create_df_from_pandas()
