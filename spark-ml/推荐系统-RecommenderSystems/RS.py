@@ -12,6 +12,8 @@ df_movie.createOrReplaceTempView("movies")          # 构建临时电影表，�
 
 df_details = spark.sql("SELECT ratings.userId , ratings.movieId , movies.title , movies.genres , ratings.rating  FROM ratings   \
           LEFT JOIN movies ON ratings.movieId = movies.movieId ")		# 两表关联，获取具体的信息
+		  
+df_details.select('userId','title','rating').where('rating=4').show(10)
 
 print((df_details.count(),len(df_details.columns)))             		# 查看数据规模
 
@@ -61,7 +63,7 @@ evaluator=RegressionEvaluator(metricName='rmse',predictionCol='prediction',label
 
 rmse=evaluator.evaluate(predicted_ratings)
 
-print('{}{}'.format("标准误差：",rmse))						# 查看使用推荐系统后的预测的标准误差
+print('{}{}'.format("标准误差：",rmse))						# 查看使用推荐系统后的预测的标准误差，若标准误差不是很大的话，可以进行下一步操作。
 
 unique_movies=indexed.select('title_new').distinct()    	# 筛选出所有电影，使用distinct
 unique_movies.count()
@@ -80,9 +82,11 @@ total_movies.show(10,False)
 
 remaining_movies=total_movies.where(col("no_46.title_new").isNull()).select(all.title_new).distinct()   # 46号用户，没看过电影的df
 
-remaining_movies=remaining_movies.withColumn("userId",lit(int(user_id)))   # 添加一列      
+remaining_movies=remaining_movies.withColumn("userId",lit(46))   		# 添加一列      
 
-recommendations=rec_model.transform(remaining_movies).orderBy('prediction',ascending=False)
+recommendations=rec_model.transform(remaining_movies).orderBy('prediction',ascending=False)	
+
+recommendations.show(5,False)	
 
 movie_title = IndexToString(inputCol="title_new", outputCol="title",labels=model.labels)
 
