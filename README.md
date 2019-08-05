@@ -30,3 +30,11 @@ PySpark Operator Step
 [5-数据操作-SQL](pyspark-operator-step/5-数据操作-SQL.md)     
 [6-MLlib使用](pyspark-operator-step/6-MLlib使用.md)     
 [7-数据保存](pyspark-operator-step/7-数据保存.md)     
+
+PySpark ML
+
+[线性回归-LinearRegression](spark-ml/线性回归-LinearRegression.md)                      
+[逻辑回归-LogisticRegression](spark-ml/逻辑回归-LogisticRegression.md)               
+[随机森林-RandomForests](spark-ml/随机森林-RandomForests.md)                     
+[推荐系统-RecommenderSystems](spark-ml/推荐系统-RecommenderSystems.md)                    
+[分类-Clustering](spark-ml/分类-Clustering.md)             
